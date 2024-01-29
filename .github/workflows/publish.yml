@@ -28,10 +28,12 @@ jobs:
       run: |
         git config user.name "${{ github.actor }}"
         git config user.email "${{ github.actor }}@users.noreply.github.com"
-        git fetch
         git checkout publish
-        rm -rf *  
-        cp -r dist
-        git add -A
+        git rm -r .  # Remove existing files in publish branch
+        git commit -m "Remove existing files in publish branch"
+        git push origin publish
+        git checkout main
+        git checkout publish -- dist  # Copy 'dist' folder from main to publish branch
+        git add .
         git commit -m "Auto-publish from main branch"
         git push origin publish
