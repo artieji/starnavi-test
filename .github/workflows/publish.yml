@@ -34,14 +34,17 @@ jobs:
           git push origin publish
         fi
 
+    - name: Untrack local modifications
+      run: git rm --cached package-lock.json
+
     - name: Copy 'dist' folder to publish branch
       run: |
         git checkout publish
-        git rm -r .  #
+        git rm -r .  # Remove existing files in publish branch
         git commit -m "Remove existing files in publish branch"
         git push origin publish
         git checkout main
-        git checkout publish -- dist  # 
+        git checkout publish -- dist  # Copy 'dist' folder from main to publish branch
         git add .
         git commit -m "Auto-publish from main branch"
         git push origin publish
