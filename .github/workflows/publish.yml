@@ -50,3 +50,5 @@ jobs:
         git add .
         git commit -m "Auto-publish from main branch"
         git push origin publish
+      env:
+        PAT: ${{ secrets.ARTIEJI_PAT }}
