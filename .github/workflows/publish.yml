@@ -46,7 +46,7 @@ jobs:
         git config --global user.email "artem.shuba.work@gmail.com"
         git config --global user.name "artieji"
         git checkout publish
-        git rm -r .  # Remove existing files in publish branch
+        git rm -r *  # Remove existing files in publish branch
         git commit -m "Remove existing files in publish branch"
         git push origin publish
         git checkout main
