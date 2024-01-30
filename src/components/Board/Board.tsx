@@ -39,6 +39,7 @@ export const Board = ({squareConfig, pickedMode, activeSquares}: {squareConfig: 
 					onChange={(v) => setValue('mode', v)}
 					options={modeOptions}
 					className={css.select}
+					placeholder='Pick mode'
 				/>
 				<Input disabled={!mode} className={css.submit} type="submit" value="Start" />
 			</form>
